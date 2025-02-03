@@ -12,14 +12,14 @@ def main():
         
         if choice == "1":
             task = input("Enter task: ")
-            tasks.add_task(task)  # Corrigido para chamar a função correta
+            tasks.add_task(task)
             
         elif choice == "2":
-            task = input("Enter task: ")
-            tasks.remove_task(task)  # Corrigido para chamar a função correta
+            task = input("Enter task to remove: ")
+            tasks.remove_task(task)
         
         elif choice == "3":
-            tasks.view_tasks()  # Removido argumento errado
+            tasks.view_tasks()
         
         elif choice == "4":
             print("Goodbye!")

@@ -2,25 +2,27 @@ import storage
 
 def add_task(task):
     tasks = storage.load_tasks()
-    tasks.append(task)  # Corrigido: antes estava `tasks.append(tasks)`
+    new_task = {"task": task, "done": False}  # Cria um dicionário para representar a tarefa
+    tasks.append(new_task)
     storage.save_tasks(tasks)
     print("Task added successfully!")
-    
-def remove_task(task):
+
+def remove_task(task_name):
     tasks = storage.load_tasks()
-    if task in tasks:
-        tasks.remove(task)
-        storage.save_tasks(tasks)
-        print("Task removed successfully!")
+    updated_tasks = [task for task in tasks if task["task"] != task_name]  # Filtra a lista, removendo a tarefa desejada
+    
+    if len(updated_tasks) < len(tasks):
+        storage.save_tasks(updated_tasks)
+        print(f"Task '{task_name}' removed successfully!")
     else:
         print("Task not found!")
-    
+
 def view_tasks():
     tasks = storage.load_tasks()
     if tasks:
         print("\n=== Tasks ===")
         for i, task in enumerate(tasks, 1):
-            print(f"{i}. {task}")
+            status = "[X]" if task["done"] else "[ ]"  # Indica se a tarefa está concluída
+            print(f"{i}. {status} {task['task']}")
     else:    
         print("No tasks found!")
-        
