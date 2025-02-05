@@ -1,1 +1,17 @@
-[]
+[
+    {
+        "task": "andar de carro",
+        "done": false,
+        "priority": "Low"
+    },
+    {
+        "task": "zandar",
+        "done": true,
+        "priority": "Medium"
+    },
+    {
+        "task": "ir pra casa",
+        "done": true,
+        "priority": "High"
+    }
+]
